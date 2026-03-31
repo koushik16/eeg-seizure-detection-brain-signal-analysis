@@ -164,6 +164,124 @@ Accuracy is monitored but not relied upon as the primary metric.
 
 ---
 
+## Results (Baseline)
+
+A baseline Logistic Regression model was trained on the windowed dataset to establish initial performance.
+
+### Dataset Statistics
+- Total windows: ~555,000+
+- Seizure windows: ~2,800+
+- Non-seizure windows: ~552,000+
+
+This highlights a severe class imbalance (<1% seizure samples).
+
+---
+
+### Baseline Performance
+
+| Metric        | Value |
+|--------------|------|
+| Accuracy      | ~98% |
+| Recall (Seizure) | 0.0 |
+| Precision (Seizure) | 0.0 |
+
+Confusion Matrix:
+[[284   0]
+[  4   0]]
+
+---
+
+### Key Observations
+
+- The model predicts only the majority class (non-seizure)
+- High accuracy is misleading due to class imbalance
+- The model completely fails to detect seizure events
+
+---
+
+### Implications
+
+- Standard models are insufficient without imbalance handling
+- Future work will focus on:
+  - class weighting / resampling
+  - deep learning models (CNN, LSTM)
+  - temporal pattern modeling
+
+---
+
+### Sample Visualization
+
+To understand the complexity of EEG signals and the challenge of seizure detection, we visualize both raw multi-channel signals and their time-frequency representations.
+
+---
+
+#### Multi-Channel EEG Signal (Raw)
+
+![Multi-channel EEG](images/output.png)
+
+**Observation:**
+- Combined waveform from multiple channels shows high variability
+- Overlapping signals make pattern recognition non-trivial
+- Raw signals are noisy and difficult to interpret directly
+- Highlights the need for structured preprocessing and feature extraction
+
+---
+
+#### EEG Signal (Seizure Segment)
+
+![Seizure Signal](images/seizure_signal.png)
+
+**Observation:**
+- Increased amplitude and rhythmic activity
+- More structured oscillations compared to baseline
+- Sustained abnormal patterns over time
+
+---
+
+#### EEG Signal (Non-Seizure Segment)
+
+![Normal Signal](images/normal_signal.png)
+
+**Observation:**
+- Lower amplitude and irregular fluctuations
+- No consistent rhythmic structure
+- Higher variability without clear patterns
+
+---
+
+#### Spectrogram (Seizure)
+
+![Seizure Spectrogram](images/seizure_spectrogram.png)
+
+**Observation:**
+- Concentrated energy in specific frequency bands
+- Strong temporal-frequency structure
+- Distinct patterns associated with seizure activity
+
+---
+
+#### Spectrogram (Non-Seizure)
+
+![Normal Spectrogram](images/normal_spectrogram.png)
+
+**Observation:**
+- More diffuse energy distribution
+- No consistent frequency concentration
+- Lack of strong temporal patterns
+
+---
+
+### Key Insight
+
+- Raw EEG signals are complex and noisy, especially across multiple channels
+- Seizure patterns become more distinguishable in time-frequency space
+- Simple models struggle due to lack of explicit temporal and spectral features
+- Motivates the use of:
+  - spectrogram-based inputs
+  - CNN/LSTM architectures
+  - temporal modeling approaches
+
+---
 ## Project Structure
 
 eeg-seizure-detection-brain-signal-analysis/
