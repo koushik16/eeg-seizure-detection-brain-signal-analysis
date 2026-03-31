@@ -229,7 +229,7 @@ To understand the complexity of EEG signals and the challenge of seizure detecti
 
 #### EEG Signal (Seizure Segment)
 
-![Seizure Signal](images/seizure_signal.png)
+![Seizure Signal](images/seizure_waveform.png)
 
 **Observation:**
 - Increased amplitude and rhythmic activity
@@ -240,7 +240,7 @@ To understand the complexity of EEG signals and the challenge of seizure detecti
 
 #### EEG Signal (Non-Seizure Segment)
 
-![Normal Signal](images/normal_signal.png)
+![Normal Signal](images/non-seizure-waveform.png)
 
 **Observation:**
 - Lower amplitude and irregular fluctuations
@@ -251,7 +251,7 @@ To understand the complexity of EEG signals and the challenge of seizure detecti
 
 #### Spectrogram (Seizure)
 
-![Seizure Spectrogram](images/seizure_spectrogram.png)
+![Seizure Spectrogram](images/seizure-spectrogram.png)
 
 **Observation:**
 - Concentrated energy in specific frequency bands
@@ -262,7 +262,7 @@ To understand the complexity of EEG signals and the challenge of seizure detecti
 
 #### Spectrogram (Non-Seizure)
 
-![Normal Spectrogram](images/normal_spectrogram.png)
+![Normal Spectrogram](images/non-seizure-spectrogram.png)
 
 **Observation:**
 - More diffuse energy distribution
