@@ -349,5 +349,4 @@ https://physionet.org/content/chbmit/1.0.0/
 
 Author
 
-Koushik Reddy Parukola
-Research Associate, NLP Lab — Indiana University
+© 2026 Koushik Reddy Parukola
