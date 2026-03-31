@@ -212,6 +212,7 @@ Confusion Matrix:
 ### Sample Visualization
 
 To understand the complexity of EEG signals and the challenge of seizure detection, we visualize both raw multi-channel signals and their time-frequency representations.
+
 **Note:** Raw EEG signals, especially when aggregated across multiple channels, are not easily interpretable through visual inspection alone. Subtle seizure-related patterns are often embedded within noisy, high-dimensional signals, motivating the need for automated analysis.
 
 ---
