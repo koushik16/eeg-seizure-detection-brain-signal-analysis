@@ -1,0 +1,27 @@
+# Core
+numpy
+pandas
+scipy
+
+# EEG processing
+mne
+
+# Machine Learning
+scikit-learn
+
+# Deep Learning (optional but recommended for next steps)
+torch
+torchvision
+
+# Visualization
+matplotlib
+seaborn
+
+# Notebooks
+jupyter
+
+# Signal processing / utilities
+tqdm
+
+# Optional (good for later)
+imbalanced-learn
