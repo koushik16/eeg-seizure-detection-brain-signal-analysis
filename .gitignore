@@ -1,70 +1,59 @@
-# =========================
 # DATA (DO NOT TRACK)
-# =========================
 data/
 *.edf
 *.seizures
 *.csv
 
-# If you intentionally want a specific CSV tracked, uncomment:
+# intentionally want a specific CSV tracked, uncomment here:
 # !requirements.csv
 
-# =========================
+
 # PYTHON CACHE
-# =========================
 __pycache__/
 *.py[cod]
 *$py.class
 
-# =========================
+
 # ENVIRONMENTS
-# =========================
 env/
 venv/
 .venv/
 
-# =========================
+
 # JUPYTER
-# =========================
 .ipynb_checkpoints/
 
 # Optional: if notebooks get large
 # *.ipynb
 
-# =========================
+
 # LOGS / TEMP FILES
-# =========================
 *.log
 *.tmp
 *.out
 
-# =========================
+
 # MODEL FILES
-# =========================
 *.pt
 *.pth
 *.ckpt
 *.h5
 *.pkl
 
-# =========================
+
 # MNE / EEG FILES
-# =========================
 *.fif
 
-# =========================
+
 # OS FILES
-# =========================
 .DS_Store
 Thumbs.db
 
-# =========================
+
 # IDE
-# =========================
 .vscode/
 .idea/
 
-# =========================
+
 # reference files
-# =========================
 my_reference.txt
