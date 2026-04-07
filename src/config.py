@@ -1,39 +1,78 @@
 from pathlib import Path
 
-# Base paths
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = PROJECT_ROOT / "data" / "raw"
-OUTPUT_ROOT = PROJECT_ROOT / "data" / "processed"
+# -----------------------------
+# Project paths
+# -----------------------------
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+MODELS_DIR = PROJECT_ROOT / "models"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs" / "predictions"
 
-# Patients to include
-PATIENT_IDS = [
-    "chb01", "chb02", "chb03", "chb05", "chb06",
-    "chb07", "chb08", "chb09", "chb10", "chb11",
-    "chb12", "chb13", "chb14", "chb15", "chb16",
-    "chb17", "chb18", "chb20", "chb21", "chb22",
-    "chb23", "chb24"
-]
+# -----------------------------
+# Input / signal settings
+# -----------------------------
+EXPECTED_SFREQ = 256
+WINDOW_SEC = 5
+STEP_SEC = 5
 
-# Signal settings
-L_FREQ = 0.5
-H_FREQ = 40.0
+WINDOW_SAMPLES = EXPECTED_SFREQ * WINDOW_SEC
+STEP_SAMPLES = EXPECTED_SFREQ * STEP_SEC
+
+# Keep exactly the same signal settings you used
+BANDPASS_LOW = 0.5
+BANDPASS_HIGH = 40.0
 NOTCH_FREQ = 60.0
+APPLY_NOTCH = True
 
-# Windowing settings
-WINDOW_SIZE_SEC = 5
-STRIDE_SEC = 2
-OVERLAP_LABEL_THRESHOLD = 0.2  # fraction of window overlapping seizure
-
-# Standard bipolar montage channels to keep
-TARGET_CHANNELS = [
-    "FP1-F7", "F7-T7", "T7-P7", "P7-O1",
-    "FP1-F3", "F3-C3", "C3-P3", "P3-O1",
-    "FP2-F4", "F4-C4", "C4-P4", "P4-O2",
-    "FP2-F8", "F8-T8", "T8-P8", "P8-O2",
-    "FZ-CZ", "CZ-PZ"
+# -----------------------------
+# Channel order
+# -----------------------------
+# Replace this list only if your final working pipeline uses a slightly different naming fix.
+EXPECTED_CHANNELS = [
+    "FP1-F7",
+    "F7-T7",
+    "T7-P7",
+    "P7-O1",
+    "FP1-F3",
+    "F3-C3",
+    "C3-P3",
+    "P3-O1",
+    "FP2-F4",
+    "F4-C4",
+    "C4-P4",
+    "P4-O2",
+    "FP2-F8",
+    "F8-T8",
+    "T8-P8",
+    "P8-O2",
+    "FZ-CZ",
+    "CZ-PZ",
 ]
 
-# Output files
-WINDOWS_FILE = OUTPUT_ROOT / "X_windows.npy"
-LABELS_FILE = OUTPUT_ROOT / "y_labels.npy"
-META_FILE = OUTPUT_ROOT / "metadata.csv"
+N_CHANNELS = len(EXPECTED_CHANNELS)
+
+# -----------------------------
+# Normalization stats
+# -----------------------------
+TRAIN_MEAN_PATH = PROJECT_ROOT / "data" / "processed" / "phase2" / "train_channel_mean.npy"
+TRAIN_STD_PATH = PROJECT_ROOT / "data" / "processed" / "phase2" / "train_channel_std.npy"
+
+# -----------------------------
+# Model
+# -----------------------------
+MODEL_PATH = PROJECT_ROOT / "models_pos_weight_50" / "best_eeg_cnnlstm.pth"
+CLASSIFICATION_THRESHOLD = 0.75
+
+# -----------------------------
+# Runtime
+# -----------------------------
+BATCH_SIZE = 64
+
+# -----------------------------
+# Save-intermediate names
+# -----------------------------
+PREPROCESSED_SIGNAL_NAME = "preprocessed_signal.npy"
+WINDOWS_NAME = "windows.npy"
+NORMALIZED_WINDOWS_NAME = "normalized_windows.npy"
+WINDOW_PROBS_NAME = "window_probabilities.npy"
+SUMMARY_NAME = "summary.json"
+CHANNELS_NAME = "channels_used.json"

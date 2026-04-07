@@ -1,0 +1,48 @@
+{
+  "prediction": "NO",
+  "seizure_probability": 0.9713956117630005,
+  "mean_window_probability": 0.026538880541920662,
+  "threshold": 0.7,
+  "num_windows": 720,
+  "num_positive_windows": 6,
+  "max_consecutive_positive_windows": 1,
+  "min_consecutive_positive_windows": 3,
+  "positive_windows": [
+    {
+      "window_index": 288,
+      "start_sec": 1440.0,
+      "end_sec": 1445.0,
+      "probability": 0.7604499459266663
+    },
+    {
+      "window_index": 374,
+      "start_sec": 1870.0,
+      "end_sec": 1875.0,
+      "probability": 0.8334892988204956
+    },
+    {
+      "window_index": 439,
+      "start_sec": 2195.0,
+      "end_sec": 2200.0,
+      "probability": 0.715729296207428
+    },
+    {
+      "window_index": 444,
+      "start_sec": 2220.0,
+      "end_sec": 2225.0,
+      "probability": 0.9713956117630005
+    },
+    {
+      "window_index": 450,
+      "start_sec": 2250.0,
+      "end_sec": 2255.0,
+      "probability": 0.7759482264518738
+    },
+    {
+      "window_index": 467,
+      "start_sec": 2335.0,
+      "end_sec": 2340.0,
+      "probability": 0.8644641637802124
+    }
+  ]
+}

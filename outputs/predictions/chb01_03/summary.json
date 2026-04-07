@@ -1,0 +1,132 @@
+{
+  "prediction": "YES",
+  "seizure_probability": 0.9959946870803833,
+  "mean_window_probability": 0.06819351017475128,
+  "threshold": 0.7,
+  "num_windows": 720,
+  "num_positive_windows": 20,
+  "max_consecutive_positive_windows": 10,
+  "min_consecutive_positive_windows": 3,
+  "positive_windows": [
+    {
+      "window_index": 238,
+      "start_sec": 1190.0,
+      "end_sec": 1195.0,
+      "probability": 0.9236612915992737
+    },
+    {
+      "window_index": 271,
+      "start_sec": 1355.0,
+      "end_sec": 1360.0,
+      "probability": 0.7083438038825989
+    },
+    {
+      "window_index": 272,
+      "start_sec": 1360.0,
+      "end_sec": 1365.0,
+      "probability": 0.7030728459358215
+    },
+    {
+      "window_index": 344,
+      "start_sec": 1720.0,
+      "end_sec": 1725.0,
+      "probability": 0.9519979357719421
+    },
+    {
+      "window_index": 345,
+      "start_sec": 1725.0,
+      "end_sec": 1730.0,
+      "probability": 0.8227543830871582
+    },
+    {
+      "window_index": 600,
+      "start_sec": 3000.0,
+      "end_sec": 3005.0,
+      "probability": 0.993699312210083
+    },
+    {
+      "window_index": 601,
+      "start_sec": 3005.0,
+      "end_sec": 3010.0,
+      "probability": 0.9916160702705383
+    },
+    {
+      "window_index": 602,
+      "start_sec": 3010.0,
+      "end_sec": 3015.0,
+      "probability": 0.9817408323287964
+    },
+    {
+      "window_index": 603,
+      "start_sec": 3015.0,
+      "end_sec": 3020.0,
+      "probability": 0.9952497482299805
+    },
+    {
+      "window_index": 604,
+      "start_sec": 3020.0,
+      "end_sec": 3025.0,
+      "probability": 0.9831441044807434
+    },
+    {
+      "window_index": 605,
+      "start_sec": 3025.0,
+      "end_sec": 3030.0,
+      "probability": 0.9544312357902527
+    },
+    {
+      "window_index": 606,
+      "start_sec": 3030.0,
+      "end_sec": 3035.0,
+      "probability": 0.9700807332992554
+    },
+    {
+      "window_index": 607,
+      "start_sec": 3035.0,
+      "end_sec": 3040.0,
+      "probability": 0.9614073634147644
+    },
+    {
+      "window_index": 608,
+      "start_sec": 3040.0,
+      "end_sec": 3045.0,
+      "probability": 0.9069372415542603
+    },
+    {
+      "window_index": 609,
+      "start_sec": 3045.0,
+      "end_sec": 3050.0,
+      "probability": 0.9959946870803833
+    },
+    {
+      "window_index": 611,
+      "start_sec": 3055.0,
+      "end_sec": 3060.0,
+      "probability": 0.8886922597885132
+    },
+    {
+      "window_index": 612,
+      "start_sec": 3060.0,
+      "end_sec": 3065.0,
+      "probability": 0.974680483341217
+    },
+    {
+      "window_index": 613,
+      "start_sec": 3065.0,
+      "end_sec": 3070.0,
+      "probability": 0.8683897852897644
+    },
+    {
+      "window_index": 615,
+      "start_sec": 3075.0,
+      "end_sec": 3080.0,
+      "probability": 0.8229384422302246
+    },
+    {
+      "window_index": 616,
+      "start_sec": 3080.0,
+      "end_sec": 3085.0,
+      "probability": 0.85067218542099
+    }
+  ]
+}
