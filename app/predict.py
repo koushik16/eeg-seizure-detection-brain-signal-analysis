@@ -74,13 +74,6 @@ def main() -> None:
     )
 
     # 9. Print result
-    print(f"Input file: {input_path}")
-    print(f"Windows processed: {summary['num_windows']}")
-    print(f"Max seizure probability: {summary['seizure_probability']:.4f}")
-    print(f"Mean window probability: {summary['mean_window_probability']:.4f}")
-    print(f"Positive windows: {summary['num_positive_windows']}/{summary['num_windows']}")
-    print(f"Prediction: {summary['prediction']}")
-    print(f"Max consecutive positive windows: {summary['max_consecutive_positive_windows']}")
 
     print(f"Input file: {input_path}")
     print(f"Windows processed: {summary['num_windows']}")
@@ -89,22 +82,34 @@ def main() -> None:
     print(f"Positive windows: {summary['num_positive_windows']}/{summary['num_windows']}")
     print(f"Prediction: {summary['prediction']}")
 
-    if summary["num_positive_windows"] > 0:
-        print("\nPositive window time frames:")
-        for window in summary["positive_windows"]:
+
+    if summary["prediction"] == "YES":
+        print("\nConsecutive positive time frames used for YES decision:")
+        for run in summary["decision_runs"]:
             print(
-                f"  Window {window['window_index']}: "
-                f"{window['start_sec']:.2f}s to {window['end_sec']:.2f}s "
-                f"(p={window['probability']:.4f})"
+                f"  Windows {run['start_window_index']} to {run['end_window_index']} | "
+                f"{run['start_sec']:.2f}s to {run['end_sec']:.2f}s | "
+                f"count={run['num_windows']} | "
+                f"max_p={run['max_probability_in_run']:.4f} | "
+                f"mean_p={run['mean_probability_in_run']:.4f}"
             )
 
-    if summary["num_positive_windows"] > 0:
-        first_hit = summary["positive_windows"][0]
-        print(
-            f"First positive window: "
-            f"{first_hit['start_sec']:.2f}s to {first_hit['end_sec']:.2f}s "
-            f"(p={first_hit['probability']:.4f})"
-        )
+ #   if summary["num_positive_windows"] > 0:
+ #       print("\nPositive window time frames:")
+ #       for window in summary["positive_windows"]:
+ #           print(
+ #               f"  Window {window['window_index']}: "
+ #               f"{window['start_sec']:.2f}s to {window['end_sec']:.2f}s "
+ #               f"(p={window['probability']:.4f})"
+#            )
+
+ #   if summary["num_positive_windows"] > 0:
+ #       first_hit = summary["positive_windows"][0]
+ #       print(
+ #           f"First positive window: "
+ #           f"{first_hit['start_sec']:.2f}s to {first_hit['end_sec']:.2f}s "
+ #           f"(p={first_hit['probability']:.4f})"
+#        )
 
     # 10. Optional save
     if args.save_intermediate:

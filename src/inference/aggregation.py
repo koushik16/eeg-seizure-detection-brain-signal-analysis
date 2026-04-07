@@ -5,18 +5,25 @@ from typing import Any, Dict, List, Tuple
 import numpy as np
 
 
-def _max_consecutive_positives(binary_preds: np.ndarray) -> int:
-    max_run = 0
-    current_run = 0
+def _find_positive_runs(binary_preds: np.ndarray) -> List[Tuple[int, int]]:
+    """
+    Returns inclusive runs of consecutive positive windows as:
+    [(start_idx, end_idx), ...]
+    """
+    runs: List[Tuple[int, int]] = []
+    start = None
 
-    for value in binary_preds:
-        if value == 1:
-            current_run += 1
-            max_run = max(max_run, current_run)
-        else:
-            current_run = 0
+    for i, value in enumerate(binary_preds):
+        if value == 1 and start is None:
+            start = i
+        elif value == 0 and start is not None:
+            runs.append((start, i - 1))
+            start = None
 
-    return int(max_run)
+    if start is not None:
+        runs.append((start, len(binary_preds) - 1))
+
+    return runs
 
 
 def summarize_predictions(
@@ -34,25 +41,36 @@ def summarize_predictions(
 
     binary_preds = (window_probs >= threshold).astype(int)
 
-    positive_indices = np.where(binary_preds == 1)[0].tolist()
     max_prob = float(np.max(window_probs))
     mean_prob = float(np.mean(window_probs))
     num_positive = int(binary_preds.sum())
-    max_consecutive = _max_consecutive_positives(binary_preds)
 
-    positive_windows = []
-    for idx in positive_indices:
-        start_sample, end_sample = window_ranges[idx]
-        positive_windows.append(
-            {
-                "window_index": int(idx),
-                "start_sec": float(start_sample / sfreq),
-                "end_sec": float(end_sample / sfreq),
-                "probability": float(window_probs[idx]),
-            }
-        )
+    runs = _find_positive_runs(binary_preds)
 
-    file_pred = "YES" if max_consecutive >= min_consecutive_positive_windows else "NO"
+    qualifying_runs = []
+    max_consecutive = 0
+
+    for start_idx, end_idx in runs:
+        run_length = end_idx - start_idx + 1
+        max_consecutive = max(max_consecutive, run_length)
+
+        if run_length >= min_consecutive_positive_windows:
+            start_sample = window_ranges[start_idx][0]
+            end_sample = window_ranges[end_idx][1]
+
+            qualifying_runs.append(
+                {
+                    "start_window_index": int(start_idx),
+                    "end_window_index": int(end_idx),
+                    "num_windows": int(run_length),
+                    "start_sec": float(start_sample / sfreq),
+                    "end_sec": float(end_sample / sfreq),
+                    "max_probability_in_run": float(np.max(window_probs[start_idx:end_idx + 1])),
+                    "mean_probability_in_run": float(np.mean(window_probs[start_idx:end_idx + 1])),
+                }
+            )
+
+    file_pred = "YES" if len(qualifying_runs) > 0 else "NO"
 
     summary = {
         "prediction": file_pred,
@@ -63,7 +81,7 @@ def summarize_predictions(
         "num_positive_windows": num_positive,
         "max_consecutive_positive_windows": int(max_consecutive),
         "min_consecutive_positive_windows": int(min_consecutive_positive_windows),
-        "positive_windows": positive_windows,
+        "decision_runs": qualifying_runs,
     }
 
     return summary
