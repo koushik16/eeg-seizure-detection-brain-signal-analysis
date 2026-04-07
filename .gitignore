@@ -57,3 +57,5 @@ Thumbs.db
 
 # reference files
 my_reference.txt
+
+/outputs/predictions

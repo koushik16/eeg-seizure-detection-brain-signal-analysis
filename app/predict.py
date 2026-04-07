@@ -71,6 +71,7 @@ def main() -> None:
         window_ranges=window_ranges,
         threshold=CLASSIFICATION_THRESHOLD,
         sfreq=sfreq,
+        min_consecutive_positive_windows=5,
     )
 
     # 9. Print result
