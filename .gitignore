@@ -22,7 +22,7 @@ venv/
 .venv/
 
 # JUPYTER
-.ipynb_checkpoints/
+git .ipynb_checkpoints/
 
 # LOGS / TEMP FILES
 *.log
