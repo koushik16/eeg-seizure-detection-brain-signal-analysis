@@ -16,7 +16,7 @@ Electroencephalography (EEG) records electrical activity of the brain using elec
 This project builds a structured and reproducible pipeline to address these challenges.
 
 ---
-
+ 
 ## Dataset
 
 ### Source
