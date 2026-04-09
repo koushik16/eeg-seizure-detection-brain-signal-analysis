@@ -1,5 +1,13 @@
 from __future__ import annotations
+from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+from src.config import CLASSIFICATION_THRESHOLD, MIN_CONSECUTIVE_POSITIVE_WINDOWS
 import argparse
 import sys
 from pathlib import Path
@@ -71,7 +79,7 @@ def main() -> None:
         window_ranges=window_ranges,
         threshold=CLASSIFICATION_THRESHOLD,
         sfreq=sfreq,
-        min_consecutive_positive_windows=5,
+        min_consecutive_positive_windows=MIN_CONSECUTIVE_POSITIVE_WINDOWS,
     )
 
     # 9. Print result
